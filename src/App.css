@@ -1,4 +1,14 @@
-#root {
+/* #root {
   max-width: 1280px;
-  margin: 0 auto;
+} */
+
+.app {
+  padding-top: 80px;
+  padding-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .app {
+    padding-top: 60px;
+  }
 }
