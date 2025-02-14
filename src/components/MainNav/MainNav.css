@@ -1,0 +1,35 @@
+.main-nav {
+    position: fixed;
+    padding: 5px 20px;
+    background-color: #333;
+    width: 100%;
+    bottom: 0;
+}
+
+.main-nav-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.main-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.main-nav-item.active {
+    color: rgb(34, 139, 34); /* Change to a different shade of green when active */
+}
+
+.nav-icons {
+    font-size: 24px;
+}
+
+.main-nav-item-text {
+    margin-top: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
