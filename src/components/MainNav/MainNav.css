@@ -20,8 +20,13 @@
     cursor: pointer;
 }
 
+.main-nav-item:hover {
+    color: #ff5100;
+    transition: all 0.5s;
+}
+
 .main-nav-item.active {
-    color: rgb(34, 139, 34); /* Change to a different shade of green when active */
+    color: #ff5100;
 }
 
 .nav-icons {
