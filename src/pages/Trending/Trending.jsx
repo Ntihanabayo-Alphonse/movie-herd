@@ -10,7 +10,7 @@ const Trending = () => {
         const response = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${apiKey}`);
         const data = await response.json();
 
-        console.log(data);
+        
         setTrending(data.results);
     }
 
@@ -22,6 +22,9 @@ const Trending = () => {
   return (
     <div>
         <h2 className='page-title'>Trending</h2>
+        <div className="trending">
+          {trending && trending?.map((trend) => console.log(trend))}
+        </div>
     </div>
   )
 }
