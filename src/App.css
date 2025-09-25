@@ -13,9 +13,10 @@
 }
 
 .page-title {
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 100;
   font-family: Montserrat Alternatives, sans-serif;
+  text-transform: uppercase;
 }
 
 .page-title::after {
@@ -28,17 +29,22 @@
 
 @media (max-width: 768px) {
   .page-title {
-    font-size: 32px;
+    font-size: 26px;
   }
 
   .page-title::after {
   width: 55px;
   height: 4px;
-}
+  }
 }
 
 @media (max-width: 500px) {
   .page-title {
-    font-size: 26px;
+    font-size: 24px;
+  }
+
+  .page-title::after {
+  width: 50px;
+  height: 4px;
   }
 }
