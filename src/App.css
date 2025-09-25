@@ -11,3 +11,17 @@
     padding-top: 60px;
   }
 }
+
+.page-title {
+  font-size: 40px;
+  font-weight: 100;
+  font-family: Montserrat Alternatives, sans-serif;
+}
+
+.page-title::after {
+  content: '';
+  display: block;
+  width: 65px;
+  height: 5px;
+  background-color: #e50914;
+}
