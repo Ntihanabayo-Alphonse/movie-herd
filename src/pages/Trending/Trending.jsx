@@ -1,5 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
+import SingleTrends from '../../components/SingleTrends/SingleTrends';
 
 const Trending = () => {
     const apiKey = import.meta.env.VITE_API_KEY;
@@ -23,7 +24,18 @@ const Trending = () => {
     <div>
         <h2 className='page-title'>Trending</h2>
         <div className="trending">
-          {trending && trending?.map((trend) => console.log(trend))}
+          {trending && trending?.map((trend) => (
+            
+            <SingleTrends key={trend.id} 
+            id={trend.id} 
+            poster={trend.poster_path} 
+            title={trend.title || trend.name} 
+            date={trend.first_air_date || trend.release_date} 
+            media_type={trend.media_type}
+            vote_average={trend.vote_average} />
+            
+            ))
+          }
         </div>
     </div>
   )
