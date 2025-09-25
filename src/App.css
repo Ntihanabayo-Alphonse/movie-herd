@@ -3,8 +3,7 @@
 } */
 
 .app {
-  padding-top: 80px;
-  padding-bottom: 15px;
+  padding: 100px 40px 70px 40px;
 }
 
 @media (max-width: 768px) {
