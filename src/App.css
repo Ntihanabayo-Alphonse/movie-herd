@@ -6,9 +6,9 @@
   padding: 100px 40px 70px 40px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .app {
-    padding-top: 60px;
+    padding-top: 90px;
   }
 }
 
@@ -24,4 +24,21 @@
   width: 65px;
   height: 5px;
   background-color: #e50914;
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 32px;
+  }
+
+  .page-title::after {
+  width: 55px;
+  height: 4px;
+}
+}
+
+@media (max-width: 500px) {
+  .page-title {
+    font-size: 26px;
+  }
 }
