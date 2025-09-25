@@ -1,0 +1,37 @@
+.single_movie {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #333;
+  transition: transform 0.5s;
+  width: 20%;
+  position: relative;
+}
+
+.single_movie:hover {
+  transform: scale(1.03);
+  cursor: pointer;
+  background-color: #2f303a;
+}
+
+@media (max-width: 768px) {
+  .single_movie {
+    width: 46%;
+  }
+}
+
+.poster {
+    border-radius: 6px;
+}
+
+.title {
+    font-family: Montserrat Alternatives, sans-serif;
+    font-size: 20px;
+    padding: 10px 0 5px 0;
+}
+
+
+
+
