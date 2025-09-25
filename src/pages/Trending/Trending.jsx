@@ -1,6 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import SingleTrends from '../../components/SingleTrends/SingleTrends';
+import './Trending.css'
 
 const Trending = () => {
     const apiKey = import.meta.env.VITE_API_KEY;
