@@ -16,12 +16,6 @@
   background-color: #2f303a;
 }
 
-@media (max-width: 768px) {
-  .single_movie {
-    width: 46%;
-  }
-}
-
 .poster {
     border-radius: 6px;
 }
