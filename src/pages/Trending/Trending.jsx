@@ -2,14 +2,16 @@ import React from 'react'
 import { useEffect, useState } from 'react';
 import SingleTrends from '../../components/SingleTrends/SingleTrends';
 import './Trending.css'
+import Pagination from '../../components/Pagination/Pagination';
 
 const Trending = () => {
     const apiKey = import.meta.env.VITE_API_KEY;
 
     const [trending, setTrending] = useState([]);
+    const [page, setPage] = useState(1);
 
     const FetchTrendingMovies = async () => {
-        const response = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${apiKey}`);
+        const response = await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${apiKey}&page=${page}`);
         const data = await response.json();
 
         
@@ -18,7 +20,7 @@ const Trending = () => {
 
     useEffect(() => {
         FetchTrendingMovies();
-    }, []);
+    }, [page]);
       
 
   return (
@@ -38,6 +40,7 @@ const Trending = () => {
             ))
           }
         </div>
+        <Pagination movies={trending} page={page} setPage={setPage}/>
     </div>
   )
 }
