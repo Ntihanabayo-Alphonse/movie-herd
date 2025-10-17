@@ -16,7 +16,7 @@ const badgeStyle = {
   
   return (
     <div className='single_movie'>
-      <span style={badgeStyle}>{vote_average.toFixed(1)}</span>
+      <span style={badgeStyle}>{vote_average?.toFixed(1)}</span>
       <img className='poster' src={poster ? `${img_300}/${poster}` : unavailable} alt={title} />
       <h3 className='title'>{title}</h3>
       <div className='subTitle'>
