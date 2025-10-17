@@ -40,7 +40,7 @@ const Trending = () => {
             ))
           }
         </div>
-        <Pagination movies={trending} page={page} setPage={setPage}/>
+        <Pagination trends={trending} page={page} setPage={setPage}/>
     </div>
   )
 }
