@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 
 const itemsPerPage = 1;
 
-const Pagination = ({ movies, setPage, page }) => {
+const Pagination = ({ trends, movies, setPage, page }) => {
 
-    const totalPages = Math.ceil(movies.length / itemsPerPage);
-
+    const totalPages = Math.ceil(((trends?.length ?? movies?.length) || 0) / itemsPerPage);
     const handlePageChange = (page) => {
         setPage(page);
         window.scrollTo(0, 0); // Scroll to top on page change
@@ -34,7 +33,7 @@ const Pagination = ({ movies, setPage, page }) => {
                     // Show first 4 pages, last 3 pages, and current page if in between
                     if (totalPages > 8) {
                         // Show first 4 pages and last 3 pages
-                        if (pageNum <= 4 || pageNum > totalPages - 3) {
+                        if (pageNum <= 3 || pageNum > totalPages - 3) {
                             return (
                                 <button
                                     key={pageNum}
@@ -49,7 +48,7 @@ const Pagination = ({ movies, setPage, page }) => {
                         if (
                             pageNum >= page - 1 &&
                             pageNum <= page + 1 &&
-                            pageNum > 4 &&
+                            pageNum > 3 &&
                             pageNum <= totalPages - 3
                         ) {
                             return (
@@ -71,7 +70,7 @@ const Pagination = ({ movies, setPage, page }) => {
                         }
                         if (
                             pageNum === totalPages - 3 &&
-                            page < totalPages - 4
+                            page < totalPages - 3
                         ) {
                             return <span key="dots-end" style={{ margin: '0 8px', color: '#fff' }}>...</span>;
                         }
