@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 
 const itemsPerPage = 1;
 
-const Pagination = ({ trends, movies, setPage, page }) => {
+const Pagination = ({ trends, movies, series, setPage, page }) => {
 
-    const totalPages = Math.ceil(((trends?.length ?? movies?.length) || 0) / itemsPerPage);
+    const totalPages = Math.ceil(((trends?.length ?? movies?.length ?? series?.length) || 0) / itemsPerPage);
     const handlePageChange = (page) => {
         setPage(page);
         window.scrollTo(0, 0); // Scroll to top on page change
