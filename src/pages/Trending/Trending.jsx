@@ -1,7 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import SingleTrends from '../../components/SingleTrends/SingleTrends';
-import './Trending.css'
 import Pagination from '../../components/Pagination/Pagination';
 
 const Trending = () => {
@@ -26,7 +25,7 @@ const Trending = () => {
   return (
     <div>
         <h2 className='page-title'>Trending</h2>
-        <div className="trending">
+        <div className="container">
           {trending && trending?.map((trend) => (
             
             <SingleTrends key={trend.id} 
