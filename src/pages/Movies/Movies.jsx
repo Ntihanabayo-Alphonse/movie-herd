@@ -22,7 +22,7 @@ const Movies = () => {
   return (
     <div>
         <h2 className='page-title'>Movies</h2>
-        <div className="trending">
+        <div className="container">
           {movies && movies?.map((movie) => (
             
             <SingleTrends key={movie.id} 
