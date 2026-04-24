@@ -20,7 +20,7 @@ const badgeStyle = {
       <img className='poster' src={poster ? `${img_300}/${poster}` : unavailable} alt={title} />
       <h3 className='title'>{title}</h3>
       <div className='subTitle'>
-          <span>{media_type === "tv" ? "TV Series" : "Movie"}</span>
+          <span>{media_type === "tv" || media_type === "TV Show" ? "TV Series" : "Movie"}</span>
           <span>{date}</span>
       </div>
     </div>
