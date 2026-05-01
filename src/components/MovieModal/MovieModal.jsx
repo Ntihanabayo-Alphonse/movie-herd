@@ -27,6 +27,7 @@ const MovieModal = ({ movie, mediaType, onClose }) => {
         
         const detailsResponse = await fetch(detailsUrl);
         const detailsData = await detailsResponse.json();
+        console.log('Movie Details:', detailsData);
         setMovieDetails(detailsData);
 
         // Fetch credits/cast
@@ -155,7 +156,7 @@ const MovieModal = ({ movie, mediaType, onClose }) => {
                     <span className="modal-divider">•</span>
                     <span className="modal-runtime">{getRuntime()}</span>
                   </div>
-                  <p className="modal-overview">{movie.overview}</p>
+                  <p className="modal-overview">{movieDetails.overview}</p>
                   <div className="modal-actions">
                     <button className="modal-btn primary" onClick={handleWatchTrailer}>
                       <span className="btn-icon">▶</span> Watch Trailer
