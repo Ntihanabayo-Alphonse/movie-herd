@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import SingleTrends from '../../components/SingleTrends/SingleTrends';
+import MovieModal from '../../components/MovieModal/MovieModal';
+import Pagination from '../../components/Pagination/Pagination';
 import './Search.css';
 
 const Search = () => {
@@ -7,6 +9,8 @@ const Search = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [debounceTimer, setDebounceTimer] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [page, setPage] = useState(1);
 
   const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -20,7 +24,7 @@ const Search = () => {
     
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${encodeURIComponent(query)}&page=1&include_adult=false`
+        `https://api.themoviedb.org/3/search/multi?api_key=${apiKey}&language=en-US&query=${encodeURIComponent(query)}&page=${page}&include_adult=false`
       );
       const data = await response.json();
       
@@ -51,7 +55,7 @@ const Search = () => {
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [searchTerm]);
+  }, [page,searchTerm]);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -60,6 +64,14 @@ const Search = () => {
   const clearSearch = () => {
     setSearchTerm('');
     setSearchResults([]);
+  };
+
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedMovie(null);
   };
 
   return (
@@ -111,10 +123,19 @@ const Search = () => {
                     title={item.title || item.name} 
                     date={item.first_air_date || item.release_date} 
                     media_type={item.media_type === 'movie' ? 'Movie' : 'TV Show'}
-                    vote_average={item.vote_average} 
+                    vote_average={item.vote_average}
+                    onMovieClick={handleMovieClick} 
                 />
             ))}
         </div>
+        <Pagination searchResults={searchResults} page={page} setPage={setPage} />
+        {selectedMovie && (
+            <MovieModal 
+                movie={selectedMovie} 
+                mediaType={selectedMovie.media_type === 'Movie' ? 'movie' : 'tv'} 
+                onClose={handleCloseModal} 
+            />
+        )}
     </div>
   )
 }

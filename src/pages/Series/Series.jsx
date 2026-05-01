@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react'
 import SingleTrends from '../../components/SingleTrends/SingleTrends';
 import Pagination from '../../components/Pagination/Pagination';
 import GenreFilter, { seriesGenres } from '../../components/GenreFilter/GenreFilter';
+import MovieModal from '../../components/MovieModal/MovieModal';
 
 const Series = () => {
   const [series, setSeries] = useState([])
   const [page, setPage] = useState(1)
   const [selectedGenres, setSelectedGenres] = useState([])
+  const [selectedMovie, setSelectedMovie] = useState(null)
 
   const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -33,6 +35,14 @@ const Series = () => {
     setPage(1);
   };
 
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedMovie(null);
+  };
+
   useEffect(() => {
     fetchSeries()
   }, [page, selectedGenres])
@@ -50,13 +60,21 @@ const Series = () => {
             title={serie.title || serie.name}
             date={serie.first_air_date || serie.release_date}
             media_type="tv"
-            vote_average={serie.vote_average} />
+            vote_average={serie.vote_average}
+            onMovieClick={handleMovieClick} />
         ))
 
         }
       </div>
 
       <Pagination series={series} page={page} setPage={setPage} />
+      {selectedMovie && (
+            <MovieModal 
+                movie={selectedMovie} 
+                mediaType="tv" 
+                onClose={handleCloseModal} 
+            />
+        )}
     </div>
   )
 }

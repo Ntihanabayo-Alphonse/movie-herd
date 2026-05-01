@@ -1,7 +1,7 @@
 import { img_300,unavailable } from '../../config/config'
 import './SingleTrends.css'
 
-const SingleTrends = ({id, poster, title, date, vote_average, media_type}) => {
+const SingleTrends = ({id, poster, title, date, vote_average, media_type, onMovieClick}) => {
 const badgeStyle = {
     backgroundColor: vote_average >= 6 ? '#ff5100' : '#5b5d84ff',
     color: 'white',
@@ -14,8 +14,23 @@ const badgeStyle = {
     right: '0'
   }
   
+  const handleClick = () => {
+    if (onMovieClick) {
+      onMovieClick({
+        id,
+        poster_path: poster,
+        title,
+        name: title,
+        release_date: date,
+        first_air_date: date,
+        vote_average,
+        media_type: media_type === "tv" || media_type === "TV Show" ? "tv" : "movie"
+      });
+    }
+  };
+  
   return (
-    <div className='single_movie'>
+    <div className='single_movie' onClick={handleClick}>
       <span style={badgeStyle}>{vote_average?.toFixed(1)}</span>
       <img className='poster' src={poster ? `${img_300}/${poster}` : unavailable} alt={title} />
       <h3 className='title'>{title}</h3>

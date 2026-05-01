@@ -1,0 +1,536 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  overflow-y: auto;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-container {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+  margin: 20px 0 40px 0;
+  animation: slideUp 0.4s ease;
+  overflow: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+  background-color: #ff5100;
+  transform: scale(1.1);
+}
+
+.modal-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  color: #fff;
+  font-size: 20px;
+}
+
+/* Banner Section */
+.modal-banner {
+  position: relative;
+  width: 100%;
+  min-height: 350px;
+}
+
+.modal-backdrop {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.modal-banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(to top, #1a1a1a, transparent);
+}
+
+.modal-banner-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  padding: 20px 30px;
+  gap: 30px;
+  z-index: 2;
+}
+
+.modal-poster-wrapper {
+  flex-shrink: 0;
+}
+
+.modal-poster {
+  width: 150px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 10px;
+}
+
+.modal-title {
+  font-family: Montserrat Alternatives, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+.modal-divider {
+  color: #666;
+}
+
+.modal-rating {
+  color: #ff5100;
+  font-weight: 600;
+}
+
+.modal-overview {
+  color: #bbb;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.modal-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: Montserrat Alternatives, sans-serif;
+}
+
+.modal-btn.primary {
+  background-color: #ff5100;
+  color: #fff;
+}
+
+.modal-btn.primary:hover {
+  background-color: #ff6a2e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 81, 0, 0.4);
+}
+
+.modal-btn.secondary {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal-btn.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.btn-icon {
+  font-size: 16px;
+}
+
+/* Details Section */
+.modal-details {
+  padding: 30px;
+}
+
+.modal-section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-family: Montserrat Alternatives, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ff5100;
+  display: inline-block;
+}
+
+/* Section Header with Carousel Nav */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.section-header .section-title {
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ff5100;
+}
+
+/* Carousel Navigation - positioned on sides */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.carousel-nav.cast-nav-left,
+.carousel-nav.similar-nav-left {
+  left: -25px;
+}
+
+.carousel-nav.cast-nav-right,
+.carousel-nav.similar-nav-right {
+  right: -25px;
+}
+
+.carousel-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #ff5100;
+  background-color: rgba(26, 26, 26, 0.95);
+  color: #ff5100;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background-color: #ff5100;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Genres */
+.modal-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.modal-genre-tag {
+  background-color: #333;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13px;
+  border: 1px solid #444;
+  transition: all 0.3s ease;
+}
+
+.modal-genre-tag:hover {
+  border-color: #ff5100;
+  color: #ff5100;
+}
+
+/* Cast */
+.modal-cast {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 0;
+  position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-cast::-webkit-scrollbar {
+  display: none;
+}
+  background: #ff5100;
+  border-radius: 4px;
+}
+
+.cast-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 80px;
+  text-align: center;
+}
+
+.cast-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.cast-card:hover .cast-image {
+  border-color: #ff5100;
+  transform: scale(1.05);
+}
+
+.cast-name {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.cast-character {
+  color: #888;
+  font-size: 11px;
+}
+
+/* Info Grid */
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.info-label {
+  color: #888;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-value {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.info-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.info-value.tagline {
+  font-style: italic;
+  color: #ff5100;
+}
+
+/* Similar Movies */
+.modal-similar {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 0;
+  position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-similar::-webkit-scrollbar {
+  display: none;
+}
+
+.similar-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.similar-card:hover {
+  transform: translateY(-5px);
+}
+
+.similar-image {
+  width: 100px;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 8px;
+}
+
+.similar-title {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+}
+
+.similar-year {
+  color: #888;
+  font-size: 11px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .modal-container {
+    margin: 10px 0 30px 0;
+  }
+
+  .modal-banner {
+    min-height: 280px;
+  }
+
+  .modal-backdrop {
+    height: 280px;
+  }
+
+  .modal-banner-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .modal-poster {
+    width: 100px;
+  }
+
+  .modal-title {
+    font-size: 22px;
+  }
+
+  .modal-meta {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .modal-overview {
+    display: none;
+  }
+
+  .modal-actions {
+    justify-content: center;
+  }
+
+  .modal-btn {
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+
+  .modal-details {
+    padding: 20px;
+  }
+
+  .modal-title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-banner-content {
+    padding: 10px;
+  }
+
+  .modal-poster {
+    width: 80px;
+  }
+
+  .modal-title {
+    font-size: 18px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .modal-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

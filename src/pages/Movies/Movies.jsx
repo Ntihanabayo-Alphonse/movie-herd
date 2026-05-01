@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import SingleTrends from '../../components/SingleTrends/SingleTrends';
 import Pagination from '../../components/Pagination/Pagination';
 import GenreFilter from '../../components/GenreFilter/GenreFilter';
+import MovieModal from '../../components/MovieModal/MovieModal';
 
 const Movies = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -9,6 +10,7 @@ const Movies = () => {
   const [movies, setMovies] =  useState([])
   const [page, setPage] = useState(1);
   const [selectedGenres, setSelectedGenres] = useState([]);
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
   const fetchMovies = async () => {
     let url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}`;
@@ -33,6 +35,14 @@ const Movies = () => {
     setPage(1);
   };
 
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedMovie(null);
+  };
+
   useEffect(() => {
     fetchMovies()
   }, [page, selectedGenres])
@@ -50,12 +60,20 @@ const Movies = () => {
             title={movie.title || movie.name} 
             date={movie.first_air_date || movie.release_date} 
             media_type="movie"
-            vote_average={movie.vote_average} />
+            vote_average={movie.vote_average}
+            onMovieClick={handleMovieClick} />
             
             ))
           }
         </div>
         <Pagination movies={movies} page={page} setPage={setPage}/>
+        {selectedMovie && (
+            <MovieModal 
+                movie={selectedMovie} 
+                mediaType="movie" 
+                onClose={handleCloseModal} 
+            />
+        )}
     </div>
   )
 }
